@@ -1,0 +1,13 @@
+<app-header-apprenant [isShop]="true" titleHeader="Boutique" (onClickToParent)="gotoItem($event)"></app-header-apprenant>
+
+<ion-content no-padding>
+
+
+    <div class="grid">
+        <ng-container *ngFor="let formation of boutiqueFormation; index as i">
+          <app-card-item-boutique id="shop-{{formation.id}}" [item] = "formation" cssCardType="col-2" ></app-card-item-boutique>
+          <!-- [routerLink]="['/tabs/tab-boutique/', formation.id]" -->
+        </ng-container>
+      </div>
+
+</ion-content>

@@ -1,0 +1,34 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>tab-suivi</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<app-header-apprenant titleHeader="Suivi - Bilan"></app-header-apprenant>
+
+
+<ion-content>
+
+<div  class="infos-card">
+<!-- <div class="infos"> -->
+<div class="flex-container">
+<div class="titre-chiffre"> <h3>Formation en cours</h3> <p>3</p> </div>
+<div class="titre-chiffre"> <h3>Temps de formation</h3> <p>12H</p> </div>
+</div>
+<div class="titre-chiffre"> <h3>Formation Validée</h3> <p>1</p> </div>
+</div>
+
+</ion-content>
+
+<ion-footer>
+  <div class="footer-content">
+  <h3>Votre dernière activité
+  </h3> 
+  <div class="listcard">
+    <!-- <ng-container *ngFor="let formation of formationApprenants"> -->
+        <app-card-item-h [item] = "formationApprenants[0]"  (click)="goToDetail(formationApprenants[0].id)" ></app-card-item-h>
+        <!-- <app-card-item-h [item] = "formation"  [routerLink]="['/tabs/tab-formation', formation.id]"></app-card-item-h> -->
+  
+    <!-- </ng-container> -->
+  </div>
+</div>
+</ion-footer>

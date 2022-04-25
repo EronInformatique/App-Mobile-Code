@@ -1,0 +1,66 @@
+<ion-menu side="start" menuId="menu-visitor" contentId="main" type="overlay" scroll>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-content overflow-scroll="true">
+    <div *ngFor="let p of pages">
+      <ion-menu-toggle *ngIf="p.url">
+        <ion-item button [routerLink]="p.url" [routerDirection]="'root'" routerLinkActive='active'  detail="false"  [routerLinkActiveOptions]="{exact:
+          true}" lines="none">
+          <!-- <ion-icon *ngIf="p.icon" [name]="p.icon" slot="start" detail="false"> -->
+          <!-- </ion-icon> -->
+          <fa-icon  *ngIf="p.icon" [icon]="p.icon" slot="start" detail="false"></fa-icon>
+          <ion-label>
+            {{p.title}}
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-item button *ngIf="p.children?.length > 0" (click)="p.isOpen = !p.isOpen" [class.active-parent]="p.isOpen"
+        detail="false">
+        <fa-icon  *ngIf="p.icon" [icon]="p.icon" slot="start" detail="false"></fa-icon>
+        <ion-icon slot="end" name="arrow-forward" *ngIf="!p.isOpen"></ion-icon>
+        <ion-icon slot="end" name="arrow-down" *ngIf="p.isOpen"></ion-icon>
+        <ion-label>{{p.title}}</ion-label>
+      </ion-item>
+
+<!-- Possibilité d'utiliser la propriété (click) et la lié à une fonction 'onClick()' dans le typescript où l'on execute le router.navigate pour indiquer l'url -->
+      <ion-list *ngIf="p.isOpen">
+        <ion-menu-toggle>
+          <!-- <ion-item button class="sub-item" *ngFor="let subItem of p.children" [routerLink]="subItem.url"
+          [routerDirection]="'root'" routerLinkActive='active'  detail="false"    [routerLinkActiveOptions]="{exact:
+            true}" [state]=subItem (click)="onMenuClick(subItem.url,subItem.id)">  -->
+            <ion-item button class="sub-item" *ngFor="let subItem of p.children"
+            [routerDirection]="'root'"  detail="false"  (click)="onMenuClick(subItem.url,subItem.id)"> 
+            <fa-icon  *ngIf="subItem.icon && !isBoolean(subItem.icon)" [icon]="subItem.icon" slot="start" detail="false"></fa-icon>
+            <ion-label>
+              {{subItem.title}}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <ion-item-divider *ngIf="p.title==='FAQ'">
+      </ion-item-divider>
+
+
+      <ion-row *ngIf="p.title==='FAQ'" style="height: 5px"></ion-row>
+    </div>
+  
+  </ion-content>
+
+<ion-footer>
+  <ion-grid>
+  <ion-row class='rowIconSocialMedia'>
+    <fa-icon *ngFor="let iconSocialMedia of socialMedia" [icon]="iconSocialMedia.icon" class="socialMedia"  (click)="socialMediaFct(iconSocialMedia.app)"></fa-icon>
+  </ion-row>
+</ion-grid>
+</ion-footer>
+
+</ion-menu>
+
+<ion-router-outlet id="menu-visitor"></ion-router-outlet>

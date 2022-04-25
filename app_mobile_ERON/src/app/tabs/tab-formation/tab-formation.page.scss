@@ -1,0 +1,44 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.listcard{
+  display:grid;
+  grid-template-rows: auto;
+  @media (min-width: 500px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+
+// ion-footer{
+//   background-color:rgba(0,0,0,0);
+// }
+
+div.footer-content{
+  display:flex;
+}
+
+div.footer-content > img{
+  height:20vh;
+  // background: rgba(255, 255, 255);
+  // background-color: rgb(150, 30, 30,0.5);
+}
+
+
+
+div.foot-content-text-arrow {
+  display: grid;
+grid-template-rows: 1fr 1fr;
+}
+
+div.foot-content-text-arrow{
+  text-align: center;
+}
+
+div.foot-content-text-arrow > fa-icon{
+  font-size: 2rem;
+  color:#003478;
+}

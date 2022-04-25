@@ -1,0 +1,7 @@
+{
+  "name": "ERON-Santé",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
